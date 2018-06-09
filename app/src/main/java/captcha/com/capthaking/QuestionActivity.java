@@ -67,12 +67,12 @@ public class QuestionActivity extends AppCompatActivity {
                  mResults.add(result);
 
 
-                 if (mResults.size()==5 && mAnswer.isNextQuestionNotAvailble() )
+                 if (mResults.size()==5 ||mAnswer.isNextQuestionNotAvailble() )
                  {
                      Intent intent = new Intent(QuestionActivity.this, ResultActivity.class);
                      intent.putExtra("results",mResults);
                      startActivity(intent);
-                     return;
+                     finish();
 
                  }
                  else  updateUI();
@@ -101,9 +101,14 @@ void updateUI(){
 
     title.setText("Round "+mResults.size()+1 +"/5");
   //  timer.setText(question.getTime());
-    int id = getResources().getIdentifier(question.getName(), "drawable", getPackageName());
-   mImageView.setImageResource(id);
-    mEditText.setText("");
+    if (question!=null&& question.getName()!=null)
+    {
+        int id = getResources().getIdentifier(question.getName(), "drawable", getPackageName());
+        mImageView.setImageResource(id);
+        mEditText.setText("");
+
+    }
+
 }
 
 
