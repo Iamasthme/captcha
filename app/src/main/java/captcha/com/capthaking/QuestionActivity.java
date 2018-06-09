@@ -65,6 +65,8 @@ public class QuestionActivity extends AppCompatActivity {
                  }
 
                  mResults.add(result);
+
+
                  if (mResults.size()==5 && mAnswer.isNextQuestionNotAvailble() )
                  {
                      Intent intent = new Intent(QuestionActivity.this, ResultActivity.class);
@@ -72,9 +74,8 @@ public class QuestionActivity extends AppCompatActivity {
                      startActivity(intent);
                      return;
 
-
                  }
-                 updateUI();
+                 else  updateUI();
 
              }
          });
